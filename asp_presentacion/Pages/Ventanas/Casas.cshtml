@@ -151,6 +151,25 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group"> 
+                    <label class="col-lg-4 control-label">
+                        Imagen
+                    </label>
+                    <div class="col-lg-6">
+                        @if (Model.Actual!.Direccion != null)
+                        {
+                            <img height="100"
+                                 width="100"
+                                 src="data:image;base64,
+                                            @System.Convert.ToBase64String(
+                                            lib_utilidades.EncodingHelper.ToBytes(
+                                            Model.Actual!.Direccion))" />
+                        }
+                        <input type="file"
+                               class="form-control"
+                               asp-for="FormFile" />
+                    </div>
+                </div>
             }
 
             @if (Model.Accion == lib_utilidades.Enumerables.Ventanas.Listas ||

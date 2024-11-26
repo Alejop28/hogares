@@ -22,7 +22,7 @@ namespace asp_presentacion.Pages.Ventanas
                 LogConversor.Log(ex, ViewData!);
             }
         }
-
+        public IFormFile? FormFile { get; set; }
         [BindProperty] public Enumerables.Ventanas Accion { get; set; }
         [BindProperty] public Casas? Actual { get; set; }
         [BindProperty] public Casas? Filtro { get; set; }
@@ -34,6 +34,11 @@ namespace asp_presentacion.Pages.Ventanas
         {
             try
             {
+                var variable_session = HttpContext.Session.GetString("key"); //El propósito general de este código es asegurarse de
+                                                                             //que haya un valor en la sesión para la clave "key". Si no existe,
+                                                                             //se inicializa con un valor predeterminado ("Pruebas")
+                if (String.IsNullOrEmpty(variable_session))
+                    HttpContext.Session.SetString("key", "Pruebas");
                 Filtro!.Nombre = Filtro!.Nombre ?? "";
 
                 Accion = Enumerables.Ventanas.Listas;

@@ -1,12 +1,4 @@
 
-
-
-
-
-
-
-
-
 using asp_servicios;
 
 var builder = WebApplication.CreateBuilder(args);
